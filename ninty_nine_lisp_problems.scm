@@ -62,14 +62,14 @@
 
 (my-flatten '(A (B (C D) E)) '() 0)
 
-;P08
+;P08 -- Pull out dublicates of the list
 (define compress
   (lambda (n res ind)
     (if (>= ind (length n))
         res
-        (if (member (list-ref n ind) n)
+        (if (member (list-ref n ind) res)
             (compress n res (+ ind 1))
-            (compress n (append (list-ref n ind) res) (+ ind 1))
+            (compress n (cons (list-ref n ind) res) (+ ind 1))
             )
         )
     )
