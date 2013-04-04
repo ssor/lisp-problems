@@ -200,3 +200,17 @@
     )
   )
 (range 9 3 '())
+
+(#%require (only racket/base random))
+(random 10)
+
+; P23 -- Extract a given number of randomly selected elements from a list.
+(define rnd-select
+  (lambda (n r res)
+    (if (<= r 0)
+        res
+        (rnd-select n (- r 1) (cons (list-ref n (random (- (length n) 1))) res))
+        )
+    )
+  )
+(rnd-select '(a b c d e f g h) 3 '())
