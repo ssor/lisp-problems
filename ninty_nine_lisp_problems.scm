@@ -202,7 +202,6 @@
 (range 9 3 '())
 
 (#%require (only racket/base random))
-(random 10)
 
 ; P23 -- Extract a given number of randomly selected elements from a list.
 (define rnd-select
@@ -213,4 +212,16 @@
         )
     )
   )
-(rnd-select '(a b c d e f g h) 3 '())
+(rnd-select '(a b c d e f g h) 4 '())
+
+;P24 -- Lotto: Draw N different random numbers from the set 1..M.
+(define lotto-select
+  (lambda (x1 x2 res)
+    (if (<= x1 0)
+        res
+        (lotto-select (- x1 1) x2 (cons (random x2) res))
+        )
+    )
+  )
+
+(lotto-select 6 49 '())
