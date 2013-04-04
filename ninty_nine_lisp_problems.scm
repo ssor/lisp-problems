@@ -161,3 +161,17 @@
     )
   )
 (rotate '(a b c d e f g h) -2 '() 0)
+
+; P20 -- Remove the K'th element from a list.
+(define remove-at
+  (lambda (n r res ind)
+  (if (>= ind (length n))
+      (reverse res)
+      (if (= (+ ind 1) r)
+          (remove-at n r res (+ ind 1))
+          (remove-at n r (cons (list-ref n ind) res) (+ ind 1))
+          )
+      )
+    )
+  )
+(remove-at '(a b c d) 2 '() 0)
