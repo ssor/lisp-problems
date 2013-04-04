@@ -47,21 +47,6 @@
   )
 (palindrome x 0 (- (length x) 1))
 
-;P07: Flatten a nested list structure -- not working yet
-;(define my-flatten
-;  (lambda (a res ind)
-;    (if (>= ind (length a))
-;        res
-;        (if (list? (list-ref a ind))
-;            (my-flatten a (append (list-ref a ind) res) (+ ind 1))
-;            (my-flatten a (list (list-ref a ind) res) (+ ind 1))
-;            )    
-;    )
-;   )
-;  )
-
-;(my-flatten '((A B) (B (C D) E)) '() 0)
-
 ;P08 -- Pull out dublicates of the list
 (define compress
   (lambda (n res ind)
@@ -223,5 +208,4 @@
         )
     )
   )
-
 (lotto-select 6 49 '())
