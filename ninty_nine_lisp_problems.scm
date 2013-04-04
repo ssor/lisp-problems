@@ -149,5 +149,15 @@
         )
     )
   )
-
 (slice '(a b c d e f g h i k) 3 7 '() 0)
+
+; P19 -- Rotate a list N places to the left.
+(define rotate
+  (lambda (n r res ind)
+    (if (>= r 0)
+      (append (list-ref (split n r '() '() '() 0) 1) (list-ref (split n r '() '() '() 0) 0))
+      (append (list-ref (split n (+ (length n) r) '() '() '() 0) 1) (list-ref (split n (+ (length n) r) '() '() '() 0) 0)) 
+      )
+    )
+  )
+(rotate '(a b c d e f g h) -2 '() 0)
