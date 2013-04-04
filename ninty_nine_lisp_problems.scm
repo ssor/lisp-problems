@@ -175,3 +175,28 @@
     )
   )
 (remove-at '(a b c d) 2 '() 0)
+
+;P21 -- Insert an element at a given position into a list.
+(define insert-at
+  (lambda (w n r res ind)
+    (if (>= ind (length n))
+      (reverse res)
+      (append (reverse (cons w (list-ref (split n (- r 1) '() '() '() 0) 0))) (list-ref (split n (- r 1) '() '() '() 0) 1))
+      )
+    )
+  )
+(insert-at 'alfa '(a b c d) 2 '() 0)
+
+;P22 -- Create a list containing all integers within a given range.\
+(define range 
+  (lambda (x1 x2 res)
+    (if (= x1 x2)
+        (reverse (cons x1 res))
+        (if (<= x1 x2)
+            (range (+ x1 1) x2 (cons x1 res))
+            (range (- x1 1) x2 (cons x1 res))
+            )
+        )
+    )
+  )
+(range 9 3 '())
