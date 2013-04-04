@@ -133,3 +133,21 @@
     )
   )
 (split '(a b c d e f g h i k) 3 '() '() '() 0)
+
+; P18 -- Extract a slice from a list.
+(define slice
+  (lambda (n r1 r2 res ind)
+    (if (>= ind (length n))
+        (reverse res)
+        (if (>= ind (- r1 1))
+            (if (< ind r2)
+             (slice n r1 r2 (cons (list-ref n ind) res) (+ ind 1))
+             (slice n r1 r2 res (+ ind 1))
+             )
+            (slice n r1 r2 res (+ ind 1))
+        )
+        )
+    )
+  )
+
+(slice '(a b c d e f g h i k) 3 7 '() 0)
