@@ -118,5 +118,18 @@
         )
     )
   )
-
 (drop '(a b c d e f g h i k) 3 '() 0)
+
+; P17 -- Split a list into two parts; the length of the first part is given.
+(define split
+  (lambda (n r x1 x2 res ind)
+    (if (>= ind (length n))
+        (list (reverse x1) (reverse x2))
+        (if (< ind r)
+            (split n r (cons (list-ref n ind) x1) x2 res (+ ind 1))
+            (split n r x1 (cons (list-ref n ind) x2) res (+ ind 1))
+            )
+        )
+    )
+  )
+(split '(a b c d e f g h i k) 3 '() '() '() 0)
