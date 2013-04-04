@@ -66,7 +66,7 @@
 (define compress
   (lambda (n res ind)
     (if (>= ind (length n))
-        res
+        (reverse res)
         (if (member (list-ref n ind) res)
             (compress n res (+ ind 1))
             (compress n (cons (list-ref n ind) res) (+ ind 1))
@@ -105,3 +105,18 @@
     )
   )
 (repli '(a b c) 4 '() 0)
+
+; P16 -- Drop every N'th element from a list.
+(define drop
+  (lambda (n r res ind)
+    (if (>= ind (length n))
+        (reverse res)
+        (if ( = (modulo (+ ind 1) r) 0)
+            (drop n r res (+ ind 1))
+            (drop n r (cons (list-ref n ind) res) (+ ind 1))
+            )
+        )
+    )
+  )
+
+(drop '(a b c d e f g h i k) 3 '() 0)
