@@ -193,7 +193,7 @@
   (lambda (n r res)
     (if (<= r 0)
         res
-        (rnd-select n (- r 1) (cons (list-ref n (random (- (length n) 1))) res))
+        (rnd-select n (- r 1) (cons (list-ref n (random (length n))) res))
         )
     )
   )
@@ -209,3 +209,11 @@
     )
   )
 (lotto-select 6 49 '())
+
+;P25 -- Generate a random permutation of the elements of a list.
+(define rnd-permu
+  (lambda (n res)
+    (rnd-select n (length n) res)
+    )
+  )
+(rnd-permu '(a b c d e f) '())
