@@ -217,3 +217,20 @@
     )
   )
 (rnd-permu '(a b c d e f) '())
+
+;P31 -- Determine whether a given integer number is prime.
+(define is-prime
+  (lambda (x t)
+    (if (> t (expt x x))
+        #t
+        (if (= x t)
+            (is-prime x (+ t 1))
+            (if (= (modulo x t) 0)
+                #f
+                (is-prime x (+ t 1))
+                )
+        )
+    )
+    )
+  )
+(is-prime 7 2)
