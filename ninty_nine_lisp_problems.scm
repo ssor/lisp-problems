@@ -283,3 +283,38 @@
   )
 (is-prime 7)
 (is-prime 8)
+
+;P32 -- Determine the greatest common divisor of two positive integer numbers.
+(define gcd-helper
+  (lambda (x1 x2 res)
+    (if (= x1 x2)
+        x2
+        (if (< x1 x2)
+            (gcd-helper x1 (- x2 x1) (+(- res res)x1))
+            (gcd-helper x2 (- x1 x2) (+(- res res)x2))
+            )
+        )
+    )
+  )
+(define (gcd-func x1 x2)
+  (gcd-helper x1 x2 0)
+  )
+(gcd-func 93 9)
+
+;P54A -- Check whether a given term represents a binary tree
+(define istree 
+  (lambda (n ind res)
+    (if (= (length n) 3)
+        (if (equal? (car n) '(nil))
+            #f
+            (if (equal? (cdr n) '(nil nil))
+                #t
+                (istree (list-ref n (+ ind 1)) 0 #t)
+                )
+            )
+        #f
+        )
+    )
+  )
+(istree '(a (b nil nil) nil) 0 #t)
+(istree '(a (b nil nil)) 0 #t)
